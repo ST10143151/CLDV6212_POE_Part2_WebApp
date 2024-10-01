@@ -11,11 +11,14 @@ public class ProductsController : Controller
     private readonly TableStorageService _tableStorageService;
     private readonly CartService _cartService;
 
-    public ProductsController(BlobService blobService, TableStorageService tableStorageService, CartService cartService)
+    private readonly HttpClient _httpClient;
+
+    public ProductsController(BlobService blobService, TableStorageService tableStorageService, CartService cartService, HttpClient httpClient)
     {
         _blobService = blobService;
         _tableStorageService = tableStorageService;
         _cartService = cartService;
+        _httpClient = httpClient;
     }
 
     [HttpGet]
@@ -81,6 +84,32 @@ public async Task<IActionResult> AddProduct(Product product, IFormFile file)
     return View(product);
 }*/
 
+[HttpPost]
+    public async Task<IActionResult> AddProduct(string containerName, string blobName, IFormFile file)
+    {
+        if (file == null || file.Length == 0)
+        {
+            return BadRequest("File is missing.");
+        }
+
+        using (var content = new MultipartFormDataContent())
+        {
+            content.Add(new StringContent(containerName), "containerName");
+            content.Add(new StringContent(blobName), "blobName");
+            content.Add(new StreamContent(file.OpenReadStream()), "file", file.FileName);
+
+            var response = await _httpClient.PostAsync("https://<your-function-app-url>/api/UploadBlob", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok("Blob uploaded successfully.");
+            }
+            else
+            {
+                return StatusCode((int)response.StatusCode, "Error uploading blob.");
+            }
+        }
+    }
     [HttpPost]
     public async Task<IActionResult> AddProduct(Product product, IFormFile file)
     {

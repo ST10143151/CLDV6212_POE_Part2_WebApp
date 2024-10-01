@@ -10,12 +10,14 @@ public class OrderStatusesController : Controller
     private readonly TableStorageService _tableStorageService;
     private readonly QueueService _queueService;
     private readonly OrderService _orderService;
+    private readonly HttpClient _httpClient;
 
-    public OrderStatusesController(TableStorageService tableStorageService, QueueService queueService, OrderService orderService)
+    public OrderStatusesController(TableStorageService tableStorageService, QueueService queueService, OrderService orderService, HttpClient httpClient)
     {
         _tableStorageService = tableStorageService;
         _queueService = queueService;
         _orderService = orderService;
+        _httpClient = httpClient;
     }
 
     // Action to display all order statuses
@@ -82,6 +84,21 @@ public async Task<IActionResult> Register(OrderStatus orderstatus)
     return View(orderstatus);
 }
 
+[HttpPost]
+    public async Task<IActionResult> Checkout(string queueName, string message)
+    {
+        var queryString = $"queueName={queueName}&message={message}";
+        var response = await _httpClient.PostAsync($"https://<your-function-app-url>/api/ProcessQueueMessage?{queryString}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return Ok("Message added to queue successfully.");
+        }
+        else
+        {
+            return StatusCode((int)response.StatusCode, "Error adding message to queue.");
+        }
+    }
     // Action to handle checkout process
     public async Task<IActionResult> Checkout()
     {

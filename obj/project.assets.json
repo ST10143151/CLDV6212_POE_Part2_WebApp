@@ -2758,11 +2758,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/ABC_Retailers.csproj",
+      "projectUniqueName": "/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/ABC_Retailers.csproj",
       "projectName": "ABC_Retailers",
-      "projectPath": "/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/ABC_Retailers.csproj",
+      "projectPath": "/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/ABC_Retailers.csproj",
       "packagesPath": "/Users/anantareddy/.nuget/packages/",
-      "outputPath": "/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/obj/",
+      "outputPath": "/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/anantareddy/.nuget/NuGet/NuGet.Config"

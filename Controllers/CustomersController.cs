@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Authorization;
 public class CustomersController : Controller
 {
     private readonly TableStorageService _tableStorageService;
+    private readonly HttpClient _httpClient;
 
-    public CustomersController(TableStorageService tableStorageService)
+    public CustomersController(TableStorageService tableStorageService, HttpClient httpClient)
     {
         _tableStorageService = tableStorageService;
+        _httpClient = httpClient;
     }
 
     public async Task<IActionResult> Index()
@@ -23,6 +25,21 @@ public class CustomersController : Controller
     public IActionResult Create()
     {
         return View();
+    }
+    [HttpPost]
+    public async Task<IActionResult> Create(string tableName, string partitionKey, string rowKey, string data)
+    {
+        var queryString = $"tableName={tableName}&partitionKey={partitionKey}&rowKey={rowKey}&data={data}";
+        var response = await _httpClient.PostAsync($"https://<your-function-app-url>/api/StoreTableInfo?{queryString}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return Ok("Data stored in table successfully.");
+        }
+        else
+        {
+            return StatusCode((int)response.StatusCode, "Error storing data in table.");
+        }
     }
 
     [HttpPost]

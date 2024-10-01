@@ -1,19 +1,20 @@
 using ABC_Retailers.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 //[Authorize]
 public class FilesController : Controller
 {
     private readonly AzureFileShareService _fileShareService;
+    private readonly HttpClient _httpClient;
+
 
     public FilesController(AzureFileShareService fileShareService)
     {
         _fileShareService = fileShareService;
+
     }
 
     public async Task<IActionResult> Index()
@@ -32,70 +33,60 @@ public class FilesController : Controller
         return View(files);
     }
 
-    [HttpPost]
-public async Task<IActionResult> Upload(IFormFile file)
-{
-    if (file == null || file.Length == 0)
+ [HttpPost]
+    public async Task<IActionResult> Upload(string shareName, string fileName, IFormFile file)
     {
-        ModelState.AddModelError("file", "Please select a file to upload.");
-        return await Index();  
-    }
-
-    try
-    {
-        // Upload the file locally or to your application
-        using (var stream = file.OpenReadStream())
+        if (file == null || file.Length == 0)
         {
-            string directoryName = "uploads";  
-            string fileName = file.FileName;   
+            return BadRequest("File is missing.");
+        }
 
-            // Call your file upload service (e.g., Azure File Share service)
-            await _fileShareService.UploadFileAsync(directoryName, fileName, stream);
+        using (var content = new MultipartFormDataContent())
+        {
+            content.Add(new StringContent(shareName), "shareName");
+            content.Add(new StringContent(fileName), "fileName");
+            content.Add(new StreamContent(file.OpenReadStream()), "file", file.FileName);
 
-            // Once file is uploaded locally, call Azure Function with HTTP POST to notify or process the file
-            var functionResponse = await CallAzureFunctionAsync(fileName);
-            if (functionResponse.IsSuccessStatusCode)
+            var response = await _httpClient.PostAsync("https://<your-function-app-url>/api/UploadFile", content);
+
+            if (response.IsSuccessStatusCode)
             {
-                TempData["Message"] = $"File '{file.FileName}' uploaded successfully!";
+                return Ok("File uploaded successfully.");
             }
             else
             {
-                TempData["Message"] = $"File upload to Azure Function failed: {functionResponse.ReasonPhrase}";
+                return StatusCode((int)response.StatusCode, "Error uploading file.");
             }
         }
     }
-    catch (Exception ex)
+    [HttpPost]
+    public async Task<IActionResult> Upload(IFormFile file)
     {
-        TempData["Message"] = $"File upload failed: {ex.Message}";
+        if (file == null || file.Length == 0)
+        {
+            ModelState.AddModelError("file", "Please select a file to upload.");
+            return await Index();  
+        }
+
+        try
+        {
+            using (var stream = file.OpenReadStream())
+            {
+                string directoryName = "uploads";  
+                string fileName = file.FileName;   
+
+                await _fileShareService.UploadFileAsync(directoryName, fileName, stream);
+            }
+
+            TempData["Message"] = $"File '{file.FileName}' uploaded successfully!";
+        }
+        catch (Exception ex)
+        {
+            TempData["Message"] = $"File upload failed: {ex.Message}";
+        }
+
+        return RedirectToAction("Index"); 
     }
-
-    return RedirectToAction("Index");
-}
-
-private readonly IHttpClientFactory _httpClientFactory;
-
-public FilesController(AzureFileShareService fileShareService, IHttpClientFactory httpClientFactory)
-{
-    _fileShareService = fileShareService;
-    _httpClientFactory = httpClientFactory;
-}
-
-private async Task<HttpResponseMessage> CallAzureFunctionAsync(string fileName)
-{
-    using (var client = _httpClientFactory.CreateClient())
-    {
-        // URL of your Azure Function
-        string azureFunctionUrl = "http://localhost:7071/api/UploadFile";
-
-        // Creating the HTTP POST request
-        var content = new StringContent(JsonConvert.SerializeObject(new { FileName = fileName }), Encoding.UTF8, "application/json");
-
-        // Send the POST request to the Azure Function
-        return await client.PostAsync(azureFunctionUrl, content);
-    }
-}
-
-
 
     // Handle file download
     [HttpGet]

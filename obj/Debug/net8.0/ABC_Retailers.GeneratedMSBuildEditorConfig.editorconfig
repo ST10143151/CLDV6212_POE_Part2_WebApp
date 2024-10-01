@@ -9,87 +9,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ABC_Retailers
 build_property.RootNamespace = ABC_Retailers
-build_property.ProjectDir = /Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/
+build_property.ProjectDir = /Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master
+build_property.MSBuildProjectDirectory = /Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Account/Login.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Account/Register.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Customers/Create.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Customers/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Customers/Details.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Customers/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJzL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Customers/Index.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Customers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Files/Index.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Files/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmlsZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Home/Index.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Home/Privacy.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/OrderStatuses/Index.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/OrderStatuses/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJTdGF0dXNlcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/OrderStatuses/Register.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/OrderStatuses/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJTdGF0dXNlcy9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Products/AddProduct.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Products/AddProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvQWRkUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Products/Cart.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Products/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvQ2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Products/Details.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Products/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Products/Index.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Shared/Error.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/_ViewImports.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/_ViewStart.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/anantareddy/Downloads/cldv6212-poe-part-1-ST10143151-master/Views/Shared/_Layout.cshtml]
+[/Users/anantareddy/VS Code Files/CLDV6212_POE_Part2_WebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xqldyd9z2b

@@ -4,16 +4,13 @@ using ABC_Retailers.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Access the configuration object
 var configuration = builder.Configuration;
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var azureStorageConnectionString = configuration.GetConnectionString("AzureStorage") 
     ?? throw new ArgumentNullException("AzureStorage connection string is not provided in the configuration.");
 
-// Register services
 builder.Services.AddSingleton(new BlobService(azureStorageConnectionString));
 builder.Services.AddSingleton(new TableStorageService(azureStorageConnectionString));
 builder.Services.AddSingleton<QueueService>(sp =>
@@ -29,27 +26,25 @@ builder.Services.AddSingleton(new UserService(azureStorageConnectionString));
 builder.Services.AddSingleton<OrderService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-// Add memory cache for session management
+builder.Services.AddHttpClient();
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set session timeout
-    options.Cookie.HttpOnly = true; // Ensure the session cookie is only accessible to the server
-    options.Cookie.IsEssential = true; // Mark the cookie as essential
+    options.IdleTimeout = TimeSpan.FromMinutes(30); 
+    options.Cookie.HttpOnly = true; 
+    options.Cookie.IsEssential = true; 
 });
 
-// Configure authentication using cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Account/Login"; // Redirect to login page if unauthorized
-        options.AccessDeniedPath = "/Account/AccessDenied"; // Redirect to access denied page if forbidden
+        options.LoginPath = "/Account/Login"; 
+        options.AccessDeniedPath = "/Account/AccessDenied"; 
     });
 
-// Build the app
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -61,11 +56,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession(); // Enable session before authentication and authorization
-app.UseAuthentication(); // Enable authentication
-app.UseAuthorization(); // Enable authorization
+app.UseSession();
+app.UseAuthentication();
+app.UseAuthorization();
 
-// Configure endpoint routing
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
